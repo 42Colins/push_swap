@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:05:24 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/22 17:40:05 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:30:00 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		*lst = new;
 	else
 	{
-		array = ft_lstlast(*lst);
+		while (array->next != NULL)
+			array = array->next;
 		array->next = new;
 	}
 }

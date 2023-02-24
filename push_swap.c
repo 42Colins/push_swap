@@ -6,22 +6,48 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:35:48 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/23 17:24:26 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:57:29 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	tab_printf(int	*tab)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	int	i;
+	t_stack	*array;
 
-	i = 0;
-	while (tab[i])
+	if (!lst || !new)
+		return ;
+	array = *lst;
+	if (array == NULL)
+		*lst = new;
+	else
 	{
-		ft_printf("%s", tab[i]);
-		i++;
+		while (array->next)
+			array = array->next;
+		array->next = new;
 	}
+}
+
+size_t	tab_len(char *array)
+{
+	size_t	runner;
+
+	runner = 0;
+	while (array[runner] != '\0')
+		runner++;
+	return (runner);
+}
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+	}
+	return (lst);
 }
 
 size_t	count_char(char **argv)
@@ -47,20 +73,49 @@ size_t	count_char(char **argv)
 	return (count);
 }
 
+// t_stack* arrayToLinkedList(int* arr, int size) {
+// 	t_stack *head = NULL;
+// 	t_stack *tail = NULL;
+// 	t_stack *newNode;
+// 	int		i;
+	
+// 	i = 0;
+// 	while (i < size)
+// 	{
+// 		newNode = ft_lstnew(arr[i]);
+// 		if (head == NULL)
+// 		{
+// 			head = newNode;
+// 			tail = newNode;
+// 		} else
+// 		{	
+// 			tail->next = newNode;
+// 			tail = newNode;
+// 		}
+// 		i++;
+// 	}
+// 	return (head);
+// }
+
 void	arr_to_stack(int *array, t_stack **lsta)
 {
 	int	runner;
-	int	data;
 	t_stack	*new;
+	t_stack	*start;
+	// int	size;
 
+	// size = tab_len(array);
 	runner = 0;
 	//ft_printf("here: %d\n", array[0]);
+	//start = ft_lstnew(array[runner]);
+	//ft_lstadd_front(lsta, start);
+	//runner++;
 	while (array[runner] != '\0')
 	{
-		data = malloc(sizeof(int));
-		data = array[runner];
-		new = ft_lstnew(data);
-		ft_lstadd_back(lsta, new);
+		new = ft_lstnew(array[runner]);
+		ft_printf("test : %d\n", runner);
+		ft_lstadd_front(lsta, new);
+		ft_printf("test : %d\n", runner);
 		runner++;
 	}
 }
@@ -85,25 +140,22 @@ char	*argv_to_arr(char **argv)
 	array = ft_split(argv[1], ' ');
 	while (array[runner] != '\0')
 	{
-		stp[runner] = ft_atoi(array[runner]);
+		stp[runner] = ft_atoll(array[runner]);
 		runner++;
 	}
-	return (free(array), stp);
+	return (free_all(array, count + 1), stp);
 }
 
-void	ft_print_lst(t_stack **lsta)
+void	ft_print_lst(t_stack *lsta)
 {
-	t_stack	*lst;
+	//t_stack	*lst;
 
-	ft_printf("sahifugeyaifg\n");
-	lst = *lsta;
-	ft_printf("IM HERE\n");
-	if (!lsta)
-		return (ft_printf("TU ES NULL"), NULL);
-	while (lst->next != NULL)
+	//lst = lsta;
+	while (lsta->next)
 	{
-		ft_printf("%d\n", lst->data);
-		lst = lst->next;
+		//ft_printf("%p\n",NULL);
+		ft_printf("%d %p\n", lsta->data, lsta->next);
+		lsta = lsta->next;
 	}
 }
 
@@ -113,6 +165,7 @@ int main(int argc, char **argv)
 	size_t	words;
 	int		*array;
 	int		runner;
+	int		size;
 
 	runner = 0;
 	if (argc == 2)
@@ -124,8 +177,9 @@ int main(int argc, char **argv)
 			runner++;
 		}
 	}
+	//size = tab_len(array);
 	arr_to_stack(array, &lsta);
-	ft_printf("you're here");
-	ft_print_lst(&lsta);
+	ft_printf("you're here\n");
+	ft_print_lst(lsta);
 	// ft_printf("%i", words);
 }

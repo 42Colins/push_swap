@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/02/20 16:34:42 by cprojean         ###   ########.fr        #
+#    Updated: 2023/02/24 11:47:49 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRCS =						sa.c \
 							sb.c \
 							ss.c \
 							push_swap.c \
+							ft_atoll.c \
+							
 
 OBJS = $(SRCS:.c=.o)
 
