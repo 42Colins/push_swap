@@ -1,21 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 13:18:16 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/27 15:54:03 by cprojean         ###   ########.fr       */
+/*   Created: 2023/02/27 13:23:55 by cprojean          #+#    #+#             */
+/*   Updated: 2023/03/01 09:56:02 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	swap(t_stack **lst)
 {
-	// if (!lst || !new)
-	// 	return ;
-	new->next = *lst;
-	*lst = new;
+	t_stack	*tmp;
+
+	tmp = (*lst)->next;
+	(*lst)->next = tmp->next;
+	tmp->next = (*lst);
+	(*lst) = tmp;
 }
+
+void	ss(t_stack **lsta, t_stack **lstb)
+{
+	swap(lsta);
+	swap(lstb);
+	ft_printf("ss\n");
+}
+
+void	s(t_stack **lst, char c)
+{
+	if (c == 'a')
+	{
+		swap(lst);
+		ft_printf("sa\n");
+	}
+	else if (c == 'b')
+	{
+		swap(lst);
+		ft_printf("sb\n");
+	}
+}
+

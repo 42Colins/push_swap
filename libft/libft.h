@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:03:39 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/23 12:59:15 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:32:01 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "get_next_line.h"
-# include "../push_swap.h"
 # include <stdlib.h>
 
 typedef struct s_stack

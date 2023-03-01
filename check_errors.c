@@ -1,21 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 13:18:16 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/27 15:54:03 by cprojean         ###   ########.fr       */
+/*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
+/*   Updated: 2023/02/27 11:42:44 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+int	parse_error(t_stack *lsta)
 {
-	// if (!lst || !new)
-	// 	return ;
-	new->next = *lst;
-	*lst = new;
+	t_stack	*value;
+	
 }

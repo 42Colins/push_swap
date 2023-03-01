@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:59:18 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/24 17:56:32 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:39:33 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ t_stack	*ft_lstnew(int	data)
 {
 	t_stack	*new;
 
-	ft_printf("bonjour\n");
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
 	new->data = data;
-	new->next = 0;
+	new->next = NULL;
 	return (new);
 }
 

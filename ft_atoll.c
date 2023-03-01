@@ -6,13 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:46:25 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/24 11:48:44 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:57:45 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long long	ft_filler(long long answer, const char *str, int sign, long long index)
+long long	filler(long long answer, const char *str, int sign, long long index)
 {
 	while ('0' <= str[index] && str[index] <= '9')
 	{
@@ -44,5 +44,5 @@ long long	ft_atoll(const char *str)
 	}
 	else if (str[index] == '+')
 		index++;
-	return (ft_filler(answer, str, sign, index));
+	return (filler(answer, str, sign, index));
 }

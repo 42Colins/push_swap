@@ -5,181 +5,139 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 14:35:48 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/24 17:57:29 by cprojean         ###   ########.fr       */
+/*   Created: 2023/02/27 09:44:00 by cprojean          #+#    #+#             */
+/*   Updated: 2023/03/01 17:44:37 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+int *two_args_arr(char *argv)
 {
-	t_stack	*array;
+	int		runner;
+	char	**array;
+	int		*returned;
 
-	if (!lst || !new)
-		return ;
-	array = *lst;
-	if (array == NULL)
-		*lst = new;
-	else
+	runner = 0;
+	while (argv[runner] != '\0')
 	{
-		while (array->next)
-			array = array->next;
-		array->next = new;
+		if (ft_isalpha(argv[runner]) == 1)
+		{
+			ft_printf("ERROR ONE OF THE ARGS ISN'T A NUMBER\n");
+			return (0);
+		}	
+		runner++;
 	}
-}
-
-size_t	tab_len(char *array)
-{
-	size_t	runner;
-
+	array = ft_split(argv, ' ');
+	returned = malloc(sizeof(int) * runner);
 	runner = 0;
 	while (array[runner] != '\0')
-		runner++;
-	return (runner);
-}
-
-t_stack	*ft_lstlast(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
 	{
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-size_t	count_char(char **argv)
-{
-	int	runner;
-	int	index;
-	int	count;
-	char	*array;
-
-	count = 0;
-	runner = 1;
-	index = 0;
-	while (argv[runner])
-	{
-		while(argv[runner][index] != '\0')
-		{
-			index++;
-		}
-		count = count + index;
-		index = 0;
+		returned[runner] = ft_atoll(array[runner]);
 		runner++;
 	}
-	return (count);
+	return (returned);
 }
 
-// t_stack* arrayToLinkedList(int* arr, int size) {
-// 	t_stack *head = NULL;
-// 	t_stack *tail = NULL;
-// 	t_stack *newNode;
-// 	int		i;
-	
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		newNode = ft_lstnew(arr[i]);
-// 		if (head == NULL)
-// 		{
-// 			head = newNode;
-// 			tail = newNode;
-// 		} else
-// 		{	
-// 			tail->next = newNode;
-// 			tail = newNode;
-// 		}
-// 		i++;
-// 	}
-// 	return (head);
-// }
-
-void	arr_to_stack(int *array, t_stack **lsta)
+t_stack *arr_to_stack(int *array)
 {
-	int	runner;
+	t_stack	**lsta;
 	t_stack	*new;
-	t_stack	*start;
-	// int	size;
+	int		runner;
+	int		count;
 
-	// size = tab_len(array);
+	lsta = (t_stack *)malloc(sizeof(t_stack));
+	count = 0;
 	runner = 0;
-	//ft_printf("here: %d\n", array[0]);
-	//start = ft_lstnew(array[runner]);
-	//ft_lstadd_front(lsta, start);
-	//runner++;
 	while (array[runner] != '\0')
 	{
 		new = ft_lstnew(array[runner]);
-		ft_printf("test : %d\n", runner);
-		ft_lstadd_front(lsta, new);
-		ft_printf("test : %d\n", runner);
-		runner++;
-	}
-}
-
-char	*argv_to_arr(char **argv)
-{
-	int	runner; 
-	int	count;
-	int	**array;
-	int	*stp;
-
-	count = 0;
-	runner = 0;
-	while (argv[1][runner] != '\0')
-	{
-		if (argv[1][runner] == ' ' && argv[1][runner + 1] != '\0')
+		if (count == 0)
+		{
+			ft_lstadd_front(lsta, new);
 			count++;
+		}
+		else
+			ft_lstadd_back(lsta, new);
 		runner++;
 	}
-	runner = 0;
-	stp = malloc(sizeof(int) * (count + 1));
-	array = ft_split(argv[1], ' ');
-	while (array[runner] != '\0')
-	{
-		stp[runner] = ft_atoll(array[runner]);
-		runner++;
-	}
-	return (free_all(array, count + 1), stp);
+	return (lsta);
 }
 
-void	ft_print_lst(t_stack *lsta)
+void	stack_print(t_stack **lsta)
 {
-	//t_stack	*lst;
+	t_stack	*value;
 
-	//lst = lsta;
-	while (lsta->next)
+	value = *lsta;
+	while (value->next != NULL)
 	{
-		//ft_printf("%p\n",NULL);
-		ft_printf("%d %p\n", lsta->data, lsta->next);
-		lsta = lsta->next;
+		ft_printf("%d\n", value->data);
+		value = value->next;
 	}
+	ft_printf("%d\n", value->data);
+}
+
+int	parse_error(int *array)
+{
+	int	runner;
+	int	count;
+	
+	runner = 0;
+	count = 0;
+	while (array[count] != '\0')
+		count++;
+	while (array[runner + 1] != '\0' && (array[runner] < array[runner + 1]))
+	{
+		runner++;
+	}
+	if (count == runner + 1 || no_repeat(array) == 1)
+	{
+		ft_printf("PARSING ERROR");
+		return (1);
+	}
+	return (0);
+}
+
+int	no_repeat(int *array)
+{
+	int	runner;
+	int	index;
+	
+	runner = 0;
+	index = 0;
+	while (array[runner + 1] != '\0')
+	{
+		index = runner + 1;
+		while (array[index] != '\0')
+		{
+			if (array[index] == array[runner])
+			{
+				ft_printf("A VALUE REPEATS HERSELF\n");
+				return (1);
+			}
+			index++;
+		}
+		runner++;
+	}
+	return (0);
 }
 
 int main(int argc, char **argv)
 {
-	t_stack	*lsta;
-	size_t	words;
 	int		*array;
-	int		runner;
-	int		size;
+	t_stack	**lstb;
+	t_stack	**lsta;
 
-	runner = 0;
+	lstb = NULL;
 	if (argc == 2)
 	{
-		array = argv_to_arr(argv);
-		while(array[runner] != '\0')
-		{
-			ft_printf("%d\n", array[runner]);
-			runner++;
-		}
+		if (two_args_arr(argv[1]) == 0)
+			return (0);
+		else
+			array = two_args_arr(argv[1]);
+		if (parse_error(array) == 1)
+			return (0);
 	}
-	//size = tab_len(array);
-	arr_to_stack(array, &lsta);
-	ft_printf("you're here\n");
-	ft_print_lst(lsta);
-	// ft_printf("%i", words);
+	lsta = arr_to_stack(array);
+	stack_print(lsta);
 }

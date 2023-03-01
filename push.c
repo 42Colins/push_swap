@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 13:18:16 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/27 15:54:03 by cprojean         ###   ########.fr       */
+/*   Created: 2023/02/28 10:11:12 by cprojean          #+#    #+#             */
+/*   Updated: 2023/02/28 12:00:54 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	push_b(t_stack **lsta, t_stack **lstb)
 {
-	// if (!lst || !new)
-	// 	return ;
-	new->next = *lst;
-	*lst = new;
+	t_stack	*tmp;
+
+	if (!lstb || !*lstb)
+		return ;
+	tmp = (*lsta)->next;
+	(*lsta)->next = *lstb;
+	*lstb = *lsta;
+	*lsta = tmp;
+	ft_printf("pb\n");
+}
+
+void	push_a(t_stack **lsta, t_stack **lstb)
+{
+	t_stack	*tmp;
+
+	if (!lsta || !*lsta)
+		return ;
+	tmp = (*lstb)->next;
+	(*lstb)->next = *lsta;
+	*lsta = *lstb;
+	*lstb = tmp;
+	ft_printf("pa\n");
 }

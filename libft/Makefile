@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:30:05 by cprojean          #+#    #+#              #
-#    Updated: 2023/02/14 11:17:50 by cprojean         ###   ########.fr        #
+#    Updated: 2023/02/27 15:55:05 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_bonus =		libftbonus.a
 
 CC =				cc
 
-CFLAGS =			-Wall -Werror -Wextra
+CFLAGS =			-Wall -Werror -Wextra -g
 
 HEADERS =			libft.h
 
