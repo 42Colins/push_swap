@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 14:20:43 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/23 12:58:53 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:53:43 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int))
 
 	if (!lst || !f || !del)
 		return (NULL);
-	array = ft_lstnew(f(lst -> data));
+	array = ft_lstnew(f(lst -> data), 0);
 	if (!array)
 		return (NULL);
 	lst = lst -> next;
 	while (lst)
 	{
-		next_array = ft_lstnew(f(lst -> data));
+		next_array = ft_lstnew(f(lst -> data), 0);
 		if (!next_array)
 		{
 			ft_lstclear(&array, (del));

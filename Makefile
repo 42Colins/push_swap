@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/03/01 13:35:23 by cprojean         ###   ########.fr        #
+#    Updated: 2023/03/03 15:34:01 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRCS =						swap.c \
 							reverse_rotate.c \
 							rotate.c \
 							ft_atoll.c \
-							
+							check_errors.c \
+							sort.c \
 
 OBJS = $(SRCS:.c=.o)
 

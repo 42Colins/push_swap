@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:03:39 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/28 10:32:01 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:51:44 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_stack
 {
 	int				data;
+	int				pos;
 	struct s_stack	*next;
 }					t_stack;
 //Part one
@@ -138,7 +139,7 @@ void	ft_putnbr_fd(int n, int fd);
 //////////////////
 
 //ft_lstnew
-t_stack	*ft_lstnew(int	data);
+t_stack	*ft_lstnew(int	data, int pos);
 
 //ft_lstadd_front
 void	ft_lstadd_front(t_stack **lst, t_stack *new);

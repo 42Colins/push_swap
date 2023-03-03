@@ -6,13 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:44:00 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/01 17:44:37 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:34:44 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *two_args_arr(char *argv)
+int	*two_args_arr(char *argv)
 {
 	int		runner;
 	char	**array;
@@ -39,19 +39,21 @@ int *two_args_arr(char *argv)
 	return (returned);
 }
 
-t_stack *arr_to_stack(int *array)
+t_stack	*arr_to_stack(int *array, int *copy)
 {
 	t_stack	**lsta;
 	t_stack	*new;
 	int		runner;
 	int		count;
+	int		pos;
 
 	lsta = (t_stack *)malloc(sizeof(t_stack));
 	count = 0;
 	runner = 0;
 	while (array[runner] != '\0')
 	{
-		new = ft_lstnew(array[runner]);
+		pos = where_pos(array[runner], copy);
+		new = ft_lstnew(array[runner], pos);
 		if (count == 0)
 		{
 			ft_lstadd_front(lsta, new);
@@ -71,30 +73,39 @@ void	stack_print(t_stack **lsta)
 	value = *lsta;
 	while (value->next != NULL)
 	{
-		ft_printf("%d\n", value->data);
+		ft_printf("value : %d\n", value->data);
+		//ft_printf("position : %d\n", value->pos);
 		value = value->next;
 	}
-	ft_printf("%d\n", value->data);
+	ft_printf("value : %d\n", value->data);
+	//ft_printf("position : %d\n", value->pos);
 }
 
 int	parse_error(int *array)
 {
+	if (is_sorted(array) == 1)
+	{
+		ft_printf("VALUES ARE ALREADY SORTED");
+		return (1);
+	}
+	else if (no_repeat(array) == 1)
+		return (1);
+	return (0);
+}
+
+int	is_sorted(int	*array)
+{
 	int	runner;
 	int	count;
-	
+
 	runner = 0;
 	count = 0;
 	while (array[count] != '\0')
 		count++;
 	while (array[runner + 1] != '\0' && (array[runner] < array[runner + 1]))
-	{
 		runner++;
-	}
-	if (count == runner + 1 || no_repeat(array) == 1)
-	{
-		ft_printf("PARSING ERROR");
+	if (count == runner + 1)
 		return (1);
-	}
 	return (0);
 }
 
@@ -102,7 +113,7 @@ int	no_repeat(int *array)
 {
 	int	runner;
 	int	index;
-	
+
 	runner = 0;
 	index = 0;
 	while (array[runner + 1] != '\0')
@@ -112,7 +123,7 @@ int	no_repeat(int *array)
 		{
 			if (array[index] == array[runner])
 			{
-				ft_printf("A VALUE REPEATS HERSELF\n");
+				ft_printf("A VALUE REPEATS TWICE\n");
 				return (1);
 			}
 			index++;
@@ -122,9 +133,38 @@ int	no_repeat(int *array)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	*sort_int_array(int *array)
+{
+	int	runner;
+	int	index;
+	int	tmp;
+	int	*copy;
+
+	copy = ft_intdup(array);
+	runner = 0;
+	index = 0;
+	while (copy[runner] != '\0')
+	{
+		index = runner + 1;
+		while (copy[index] != '\0')
+		{
+			if (copy[runner] > copy[index])
+			{
+				tmp = copy[runner];
+				copy[runner] = copy[index];
+				copy[index] = tmp;
+			}
+			index++;
+		}
+		runner++;
+	}
+	return (copy);
+}
+
+int	main(int argc, char **argv)
 {
 	int		*array;
+	int		*copy;
 	t_stack	**lstb;
 	t_stack	**lsta;
 
@@ -138,6 +178,10 @@ int main(int argc, char **argv)
 		if (parse_error(array) == 1)
 			return (0);
 	}
-	lsta = arr_to_stack(array);
+	copy = sort_int_array(array);
+	lsta = arr_to_stack(array, copy);
+	stack_print(lsta);
+	ft_printf("now sorted ?\n");
+	sort_stack(lsta, lstb);
 	stack_print(lsta);
 }

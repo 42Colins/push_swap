@@ -6,13 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:59:18 by cprojean          #+#    #+#             */
-/*   Updated: 2023/02/27 11:39:33 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:46:32 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_lstnew(int	data)
+t_stack	*ft_lstnew(int	data, int	pos)
 {
 	t_stack	*new;
 
@@ -20,6 +20,7 @@ t_stack	*ft_lstnew(int	data)
 	if (!new)
 		return (NULL);
 	new->data = data;
+	new->pos = pos;
 	new->next = NULL;
 	return (new);
 }
