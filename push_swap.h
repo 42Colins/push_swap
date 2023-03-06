@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:40:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/03 15:32:19 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:33:20 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		reverse_rotate_a(t_stack **lsta);
 void		reverse_rotate_b(t_stack **lstb);
 void		rotate_a(t_stack **lsta);
 void		rotate_b(t_stack **lstb);
+void		r(t_stack **lst, char c);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 09:44:00 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/03 15:34:44 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/06 18:42:39 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,36 @@ int	*two_args_arr(char *argv)
 	return (returned);
 }
 
-t_stack	*arr_to_stack(int *array, int *copy)
+void	arr_to_stack(int *array, int *copy, t_stack **lsta)
 {
-	t_stack	**lsta;
 	t_stack	*new;
 	int		runner;
 	int		count;
 	int		pos;
 
-	lsta = (t_stack *)malloc(sizeof(t_stack));
 	count = 0;
 	runner = 0;
 	while (array[runner] != '\0')
 	{
 		pos = where_pos(array[runner], copy);
 		new = ft_lstnew(array[runner], pos);
-		if (count == 0)
-		{
-			ft_lstadd_front(lsta, new);
-			count++;
-		}
-		else
-			ft_lstadd_back(lsta, new);
+		// if (count == 0)
+		// {
+		// 	ft_lstadd_front(&lsta, new);
+		// 	count++;
+		// }
+		// else
+		ft_lstadd_back(lsta, new);
 		runner++;
 	}
 	return (lsta);
 }
 
-void	stack_print(t_stack **lsta)
+void	stack_print(t_stack *lsta)
 {
 	t_stack	*value;
 
-	value = *lsta;
+	value = lsta;
 	while (value->next != NULL)
 	{
 		ft_printf("value : %d\n", value->data);
@@ -165,9 +163,10 @@ int	main(int argc, char **argv)
 {
 	int		*array;
 	int		*copy;
-	t_stack	**lstb;
-	t_stack	**lsta;
+	t_stack	*lstb;
+	t_stack	*lsta;
 
+	lsta = NULL;
 	lstb = NULL;
 	if (argc == 2)
 	{
@@ -179,9 +178,9 @@ int	main(int argc, char **argv)
 			return (0);
 	}
 	copy = sort_int_array(array);
-	lsta = arr_to_stack(array, copy);
-	stack_print(lsta);
-	ft_printf("now sorted ?\n");
-	sort_stack(lsta, lstb);
-	stack_print(lsta);
+	arr_to_stack(array, copy, &lsta);
+	//stack_print(lsta);
+	//ft_printf("now sorted ?\n");
+	sort_stack(&lsta, &lstb);
+	//stack_print(lsta);
 }
