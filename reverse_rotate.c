@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:05:44 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/03 14:51:12 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:41:14 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	reverse_rotate(t_stack **lsta)
 	ft_lstadd_front(lsta, last);
 }
 
-void	reverse_rotating(t_stack **lst, char c)
+int	reverse_rotating(t_stack **lst, char c)
 {
 	if (c == 'a')
 	{

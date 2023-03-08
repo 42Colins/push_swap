@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:03:39 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/03 13:51:44 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:44:04 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	ft_putnbr_fd(int n, int fd);
 //////////////////
 
 //ft_lstnew
-t_stack	*ft_lstnew(int	data, int pos);
+t_stack	*ft_lstnew(int	data);
 
 //ft_lstadd_front
 void	ft_lstadd_front(t_stack **lst, t_stack *new);

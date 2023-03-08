@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:28:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/03 14:51:34 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:41:07 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	rotate(t_stack **lsta)
 	first->data = tmp.data;
 }
 
-void	r(t_stack **lst, char c)
+int	r(t_stack **lst, char c)
 {
 	if (c == 'a')
 	{

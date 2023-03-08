@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 13:23:55 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/07 11:40:49 by cprojean         ###   ########.fr       */
+/*   Created: 2023/03/08 14:33:45 by cprojean          #+#    #+#             */
+/*   Updated: 2023/03/08 16:29:44 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **lst)
+char *sort_int_array(char **array)
 {
-	t_stack	*tmp;
+	int runner;
+	int index;
+	int tmp;
+	char *copy;
 
-	tmp = (*lst)->next;
-	(*lst)->next = tmp->next;
-	tmp->next = (*lst);
-	(*lst) = tmp;
-}
-
-void	ss(t_stack **lsta, t_stack **lstb)
-{
-	swap(lsta);
-	swap(lstb);
-	ft_printf("ss\n");
-}
-
-int	s(t_stack **lst, char c)
-{
-	if (c == 'a')
+	runner = 1;
+	index = 0;
+	while (copy[runner] != '\0')
 	{
-		swap(lst);
-		ft_printf("sa\n");
+		index = runner + 1;
+		while (copy[index] != '\0')
+		{
+			if (copy[runner] > copy[index])
+			{
+				tmp = copy[runner];
+				copy[runner] = copy[index];
+				copy[index] = tmp;
+			}
+			index++;
+		}
+		runner++;
 	}
-	else if (c == 'b')
-	{
-		swap(lst);
-		ft_printf("sb\n");
-	}
+	return (copy);
 }
