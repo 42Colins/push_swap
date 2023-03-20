@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/08 17:52:05 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:25:45 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,22 @@ void	stack_ind(t_stack **lsta)
 {
 	t_stack	*tmp;
 	t_stack	*runner;
-	int		index;
+	int	index;
 
-	index = 0;
 	tmp = *lsta;
-	while (tmp->next != NULL)
+	index = 0;
+	while (tmp != NULL)
 	{
-		runner = tmp->next;
 		index = 0;
-		while (runner->next != NULL)
+		runner = *lsta;
+		while (runner != NULL)
 		{
-			if (tmp->data < runner->data)
+			// ft_printf("is %d > %d\n", tmp->data, runner->data);
+			if (tmp->data > runner->data)
 			{
 				index++;
-				ft_printf("data : %d  ", tmp->data);
-				ft_printf("index : %d\n", index);
 			}
+			// ft_printf("index : %d\n", index);
 			runner = runner->next;
 		}
 		tmp->pos = index;
@@ -95,7 +95,9 @@ int	main(int argc, char **argv)
 		// if (is_sorted(argv) == 1)
 		// 	return (ft_printf("VALUES ALREADY SORTED"));
 		many_args(argc, argv, &lsta);
+		stack_print(lsta);
 		sort_stack(&lsta, &lstb);
 		stack_print(lsta);
+		// ft_printf("%d", 101 % 2);
 	}
 }

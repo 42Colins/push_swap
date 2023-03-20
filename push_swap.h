@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:40:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/08 15:30:23 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:52:49 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int is_sorted(char **array);
 char *sort_int_array(char **array);
 int	ind_converter(char *array, int value);
 char	*argv_to_array(char **argv);
-
+void	radix_sort(t_stack **lsta, t_stack **lstb, int size);
+void	radix(t_stack **lsta, t_stack **lstb, int size);
+int	where_highest_value(t_stack **lsta);
 
 
 //MOVES
