@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:20:08 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/20 15:40:47 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:11:58 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	radix(t_stack **lsta, t_stack **lstb, int runner)
 		while (i < size)
 		{
 			elem = *lsta;
-			ft_printf("%d \n", (elem->pos >> index) & i);
-			if (((elem->pos >> index) & i) == 1)
+			//ft_printf("%d : %d \n", elem->pos, (elem->pos >> index) & i);
+			if (((elem->pos >> index) & 1) == 1)
 				r(lsta, 'a');
 			else
 				push_b(lsta, lstb);
 			i++;
 		}
-		stack_print(*lstb);
+		//stack_print(*lstb);
 		while (*lstb)
 			push_a(lsta, lstb);
 		index++;
