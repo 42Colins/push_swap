@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:28:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/07 11:41:07 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:23:32 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void	rotate(t_stack **lsta)
 
 	first = *lsta;
 	tmp.data = first->data;
+	tmp.pos = first->pos;
 	while (first->next)
 	{
 		first->data = first->next->data;
+		first->pos = first->next->pos;
 		first = first->next;
 	}
+	first->pos = tmp.pos;
 	first->data = tmp.data;
 }
 

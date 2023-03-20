@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:53:31 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/10 15:49:39 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:01:49 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	sort_stack(t_stack **lsta, t_stack **lstb)
 	else if (size == 5)
 		sort_five_args(lsta, lstb);
 	else
+	{
+		//stack_print(lsta);
 		radix_sort(lsta, lstb, size);
+	}
 }
 
 void	sort_three_args(t_stack **lsta)
