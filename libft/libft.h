@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:03:39 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/07 14:44:04 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:26:50 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,13 +157,13 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstdelone(t_stack *lst, void (*del)(int));
 
 //ft_lstclear
-void	ft_lstclear(t_stack **lst, void (*del)(int));
+void	ft_lstclear(t_stack **lst);
 
 //ft_lstiter
 void	ft_lstiter(t_stack *lst, void (*f)(int));
 
 //ft_lstmap
-t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int));
+t_stack	*ft_lstmap(t_stack *lst, int (*f)(int));
 
 //PRINTF
 //////////////////
