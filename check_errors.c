@@ -6,12 +6,12 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/08 15:14:09 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:19:34 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 int	ft_intlen(int	*array)
 {
 	int	runner;
@@ -22,25 +22,21 @@ int	ft_intlen(int	*array)
 	return (runner);
 }
 
-int parse_error(int *array)
+int	parse_error(char **array)
 {
 	if (is_sorted(array) == 1)
-	{
-		//ft_printf("VALUES ARE ALREADY SORTED");
 		return (1);
-	}
 	else if (no_repeat(array) == 1)
 		return (1);
 	return (0);
 }
 
-int is_sorted(char **array)
+int	is_sorted(char **array)
 {
-	int runner;
-	int count;
+	int	runner;
 
 	runner = 1;
-	while ((array[runner] != '\0') && (array[runner + 1] != '\0'))
+	while ((array[runner] != NULL) && (array[runner + 1] != NULL))
 	{
 		if (ft_atoll(array[runner + 1]) < ft_atoll(array[runner]))
 			return (0);
@@ -49,23 +45,20 @@ int is_sorted(char **array)
 	return (1);
 }
 
-int no_repeat(char **array)
+int	no_repeat(char **array)
 {
-	int runner;
-	int index;
+	int	runner;
+	int	index;
 
 	runner = 1;
 	index = 1;
-	while (array[runner + 1] != '\0')
+	while (array[runner + 1] != NULL)
 	{
 		index = runner + 1;
-		while (array[index] != '\0')
+		while (array[index] != NULL)
 		{
 			if ((ft_atoll(array[index])) == (ft_atoll(array[runner])))
-			{
-				//ft_printf("A VALUE REPEATS TWICE\n");
 				return (1);
-			}
 			index++;
 		}
 		runner++;
@@ -73,7 +66,7 @@ int no_repeat(char **array)
 	return (0);
 }
 
-int	*ft_intdup(const int *s1)
+int	*ft_intdup(int *s1)
 {
 	int		size;
 	int		runner;
@@ -91,14 +84,4 @@ int	*ft_intdup(const int *s1)
 	}
 	dup[runner] = '\0';
 	return (dup);
-}
-
-int	where_pos(int value, int *copy)
-{
-	int	runner;
-
-	runner = 0;
-	while (copy[runner] != value)
-		runner++;
-	return (runner);
 }

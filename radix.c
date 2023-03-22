@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:20:08 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/20 17:34:06 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:15:19 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	radix_sort(t_stack **lsta, t_stack **lstb, int size)
 
 void	radix(t_stack **lsta, t_stack **lstb, int runner)
 {
-	int	index;
-	int	i;
-	int	size;
+	int		index;
+	int		i;
+	int		size;
 	t_stack	*elem;
 
 	size = ft_lstsize(*lsta);

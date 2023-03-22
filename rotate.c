@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:28:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/20 15:23:32 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:58:59 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	r(t_stack **lst, char c)
 		rotate(lst);
 		ft_printf("rb\n");
 	}
+	return (1);
 }
 
 void	rr(t_stack **lsta, t_stack **lstb)

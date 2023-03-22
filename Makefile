@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/03/20 18:01:50 by cprojean         ###   ########.fr        #
+#    Updated: 2023/03/21 13:38:46 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -g #-Werror
+CFLAGS = -Wall -Wextra -Werror -g#-Werror
 
 RM = rm -rf
 
@@ -30,8 +30,8 @@ SRCS =						swap.c \
 							ft_atoll.c \
 							check_errors.c \
 							sort.c \
-							utils.c \
 							radix.c \
+							utils.c
 
 OBJS = $(SRCS:.c=.o)
 

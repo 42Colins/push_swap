@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:27:24 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/20 18:29:01 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:50:33 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,39 @@ void	ft_lstclear(t_stack **lst)
 {
 	t_stack	*array;
 	t_stack	*next_array;
+	int		size;
+	int		runner;
 
+	runner = 0;
+	size = ft_lstsize(*lst);
 	if (!lst)
+		return ;
+	array = *lst;
+	while (runner < size)
+	{
+		next_array = array->next;
+		free(array);
+		if (array->next)
+			array = next_array;
+		size++;
+	}
+	*lst = NULL;
+	return ;
+}
+
+void	ft_lstintclear(t_stack **lst)
+{
+	t_stack	*array;
+	t_stack	*next_array;
+
+	if (lst == NULL)
 		return ;
 	array = *lst;
 	while (array)
 	{
-		if (array->next)
-			next_array = array->next;
+		next_array = array->next;
 		free(array);
-		if (array->next)
-			array = next_array;
+		array = next_array;
 	}
 	*lst = NULL;
 	return ;

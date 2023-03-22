@@ -6,13 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 12:59:18 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/07 14:41:17 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:14:55 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_lstnew(int	data)
+t_stack	*ft_lstnew(int data)
 {
 	t_stack	*new;
 

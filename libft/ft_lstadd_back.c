@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:05:24 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/07 14:46:04 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:13:00 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		array->next = new;
 	}
 }
-

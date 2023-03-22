@@ -6,13 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:11:12 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/11 14:13:19 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:03:45 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_a(t_stack **lsta, t_stack **lstb)
+void	push_a(t_stack **lsta, t_stack **lstb)
 {
 	t_stack	*tmp;
 
@@ -25,7 +25,7 @@ int	push_a(t_stack **lsta, t_stack **lstb)
 	ft_printf("pa\n");
 }
 
-int	push_b(t_stack **lsta, t_stack **lstb)
+void	push_b(t_stack **lsta, t_stack **lstb)
 {
 	t_stack	*tmp;
 
