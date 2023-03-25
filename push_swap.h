@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:40:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/21 13:32:08 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:03:06 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void		radix(t_stack **lsta, t_stack **lstb, int size);
 int			where_highest_value(t_stack **lsta);
 int			parse_error(char **array);
 int			no_repeat(char **array);
-void		sort_three_args(t_stack **lsta);
+int			sort_three_args(t_stack **lsta);
 void		sort_four_args(t_stack **lsta, t_stack **lstb);
 void		sort_five_args(t_stack **lsta, t_stack **lstb);
 void		find_highest_value(t_stack **lsta, t_stack **lstb);
 void		next_find_highest_value(t_stack **lsta, t_stack **lstb, int pos);
 void		find_smallest_value(t_stack **lsta, t_stack **lstb);
 int			where_smallest_value(t_stack **lsta);
+t_stack		*parse_arrays(char **argv, t_stack **lsta);
+void		stack_ind(t_stack **lsta);
 
 
 //MOVES

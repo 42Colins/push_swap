@@ -6,12 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/21 15:19:34 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:43:43 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
 int	ft_intlen(int	*array)
 {
 	int	runner;

@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:53:31 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/21 14:01:53 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:04:35 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,32 @@ void	sort_stack(t_stack **lsta, t_stack **lstb)
 		radix_sort(lsta, lstb, size);
 }
 
-void	sort_three_args(t_stack **lsta)
+int	sort_three_args(t_stack **lsta)
 {
 	if (lst_is_sorted(lsta))
-		return ;
-	if (s(lsta, 'a') && lst_is_sorted(lsta))
-		return ;
-	if (r(lsta, 'a') && lst_is_sorted(lsta))
-		return ;
-	if (reverse_rotating(lsta, 'a') && lst_is_sorted(lsta))
-		return ;
-	if (r(lsta, 'a') && s(lsta, 'a') && lst_is_sorted(lsta))
-		return ;
+		return (0);
+	if (s(lsta, 'c') && lst_is_sorted(lsta))
+		return (ft_printf("sa\n"));
+	else
+		s(lsta, 'c');
+	if (r(lsta, 'c') && lst_is_sorted(lsta))
+		return (ft_printf("ra\n"));
+	else
+		reverse_rotating(lsta, 'c');
+	if (reverse_rotating(lsta, 'c') && lst_is_sorted(lsta))
+		return (ft_printf("rra\n"));
+	else
+		r(lsta, 'c');
+	if (r(lsta, 'c') && s(lsta, 'c') && lst_is_sorted(lsta))
+		return (ft_printf("ra\nsa\n"));
+	else
+	{
+		r(lsta, 'c');
+		s(lsta, 'c');
+	}
 	if (reverse_rotating(lsta, 'a') && s(lsta, 'a') && lst_is_sorted(lsta))
-		return ;
+		return (0);
+	return (1);
 }
 
 void	sort_four_args(t_stack **lsta, t_stack **lstb)
@@ -57,7 +69,7 @@ void	sort_five_args(t_stack **lsta, t_stack **lstb)
 	find_highest_value(lsta, lstb);
 	sort_four_args(lsta, lstb);
 	push_a(lsta, lstb);
-	if (lst_is_sorted(lsta) == 1)
+	if (lst_is_sorted(lsta) == 0)
 		r(lsta, 'a');
 }
 

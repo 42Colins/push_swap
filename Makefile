@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/03/21 13:38:46 by cprojean         ###   ########.fr        #
+#    Updated: 2023/03/23 16:30:20 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS =						swap.c \
 							check_errors.c \
 							sort.c \
 							radix.c \
-							utils.c
+							utils.c \
+							big_parse.c
 
 OBJS = $(SRCS:.c=.o)
 

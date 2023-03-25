@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   big_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 13:23:55 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/25 17:58:35 by cprojean         ###   ########.fr       */
+/*   Created: 2023/03/23 16:21:17 by cprojean          #+#    #+#             */
+/*   Updated: 2023/03/24 10:47:47 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **lst)
+t_stack	*parse_arrays(char **argv, t_stack **lsta)
 {
-	t_stack	*tmp;
+	char	**tmp;
+	int		runner;
+	t_stack	*new;
 
-	tmp = (*lst)->next;
-	(*lst)->next = tmp->next;
-	tmp->next = (*lst);
-	(*lst) = tmp;
-}
-
-void	ss(t_stack **lsta, t_stack **lstb)
-{
-	swap(lsta);
-	swap(lstb);
-	ft_printf("ss\n");
-}
-
-int	s(t_stack **lst, char c)
-{
-	swap(lst);
-	if (c == 'a')
-		ft_printf("sa\n");
-	else if (c == 'b')
-		ft_printf("sb\n");
-	return (1);
+	runner = 0;
+	tmp = ft_split(argv[1], ' ');
+	while (tmp[runner])
+	{
+		new = ft_lstnew(ft_atoll(tmp[runner]) + '0');
+		ft_lstadd_back(lsta, new);
+		runner++;
+	}
+	stack_ind(lsta);
+	runner = 0;
+	while (tmp[runner])
+	{
+		free(tmp[runner]);
+		runner++;
+	}
+	free(tmp);
+	return (*lsta);
 }

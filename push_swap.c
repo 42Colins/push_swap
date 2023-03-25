@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/21 13:50:58 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:50:26 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,6 @@ void	stack_ind(t_stack **lsta)
 	}
 }
 
-void	free_all(t_stack **lsta, t_stack **lstb)
-{
-	ft_lstclear(lsta);
-	ft_lstclear(lstb);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*lsta;
@@ -84,20 +78,24 @@ int	main(int argc, char **argv)
 
 	lsta = NULL;
 	lstb = NULL;
-	if (argc <= 2)
+	if (argc < 2)
 	{
 		return (1);
 		ft_printf("WRONG ARGS");
 	}
 	else if (argc == 2)
-		return (1);
+	{
+		if (parse_error(argv) == 1)
+			return (1);
+		parse_arrays(argv, &lsta);
+	}
 	else
 	{
 		if (parse_error(argv) == 1)
 			return (1);
 		many_args(argc, argv, &lsta);
-		sort_stack(&lsta, &lstb);
-		// free_all(&lsta, &lstb);
-		ft_lstintclear(&lsta);
 	}
+	sort_stack(&lsta, &lstb);
+	ft_lstintclear(&lsta);
+	ft_lstintclear(&lstb);
 }
