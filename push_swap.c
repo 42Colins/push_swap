@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/24 10:50:26 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/25 18:28:12 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ int	main(int argc, char **argv)
 	else
 	{
 		if (parse_error(argv) == 1)
-			return (1);
-		many_args(argc, argv, &lsta);
+			many_args(argc, &argv[1], &lsta);
+		else
+			many_args(argc, argv, &lsta);
 	}
 	sort_stack(&lsta, &lstb);
 	ft_lstintclear(&lsta);
-	ft_lstintclear(&lstb);
 }
