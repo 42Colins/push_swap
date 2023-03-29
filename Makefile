@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/03/29 14:43:47 by cprojean         ###   ########.fr        #
+#    Updated: 2023/03/29 15:56:27 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ libftFLAGS = -L./libft -lft
 
 HEADERS = push_swap.h
 
-SRCS =							swap.c \
+SRCS =						swap.c \
 							push.c \
 							push_swap.c \
 							reverse_rotate.c \

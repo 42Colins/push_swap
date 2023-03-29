@@ -6,12 +6,11 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/23 15:43:43 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/29 18:14:59 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ft_intlen(int	*array)
 {
@@ -23,14 +22,14 @@ int	ft_intlen(int	*array)
 	return (runner);
 }
 
-int	parse_error(char **array)
-{
-	if (is_sorted(array) == 1)
-		return (1);
-	else if (no_repeat(array) == 1)
-		return (1);
-	return (0);
-}
+// int	parse_error(char **array)
+// {
+// 	if (is_sorted(array) == 1)
+// 		return (1);
+// 	else if (no_repeat(array) == 1)
+// 		return (ft_putstr_err("Error\n"), 1);
+// 	return (0);
+// }
 
 int	is_sorted(char **array)
 {
@@ -46,23 +45,24 @@ int	is_sorted(char **array)
 	return (1);
 }
 
-int	no_repeat(char **array)
+int	no_repeat(t_stack **lst)
 {
-	int	runner;
-	int	index;
+	t_stack	*runner;
+	t_stack	*tmp;
 
-	runner = 1;
-	index = 1;
-	while (array[runner + 1] != NULL)
+	tmp = *lst;
+	if (tmp->next == NULL)
+		return (2);
+	while (tmp != NULL)
 	{
-		index = runner + 1;
-		while (array[index] != NULL)
+		runner = *lst;
+		while (runner != NULL)
 		{
-			if ((ft_atoll(array[index])) == (ft_atoll(array[runner])))
+			if ((tmp->data) == (runner->data))
 				return (1);
-			index++;
+			runner = runner->next;
 		}
-		runner++;
+		tmp = tmp->next;
 	}
 	return (0);
 }
