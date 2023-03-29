@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/25 18:28:12 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:47:03 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	}
 	else if (argc == 2)
 	{
-		if (parse_error(argv) == 1)
+		if (parse_error(argv) == 0)
 			return (1);
 		parse_arrays(argv, &lsta);
 	}
