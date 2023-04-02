@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:30:05 by cprojean          #+#    #+#              #
-#    Updated: 2023/02/27 15:55:05 by cprojean         ###   ########.fr        #
+#    Updated: 2023/04/02 20:05:40 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,18 +85,12 @@ SRCS_bonus =		ft_lstnew.c             \
 
 OBJS =				${SRCS:.c=.o}
 
-${NAME} :			${OBJS}
-					ar ${ARFLAGS} ${NAME} ${OBJS}
-
 OBJS_bonus =		${SRCS_bonus:.c=.o}
 
-${NAME_bonus} :		${OBJS} ${OBJS_bonus}
-					ar ${ARFLAGS} ${NAME} ${OBJS} ${OBJS_bonus}
+${NAME} :		${OBJS} ${OBJS_bonus}
+				ar ${ARFLAGS} ${NAME} ${OBJS} ${OBJS_bonus}
 
 all:				${NAME}
-
-bonus :				${OBJS} ${OBJS_bonus}
-					ar ${ARFLAGS} ${NAME} ${OBJS} ${OBJS_bonus}
 
 %.o : %.c			
 					$(CC) -c $(CFLAGS) $< -o $@
@@ -111,4 +105,4 @@ re :				fclean all
 
 .PHONY :			all make clean fclean re bonus
 
-.SILENT : $(OBJS) $(OBJS_bonus) ${NAME} ${NAME_bonus}
+# .SILENT : $(OBJS) $(OBJS_bonus) ${NAME} ${NAME_bonus}

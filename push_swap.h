@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:40:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/04/02 18:39:03 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:30:20 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		ft_putstr_err(char *str);
 int			ft_check_lst(t_stack **lst);
 int			ft_isnbr(int c);
 int			only_nbr(char *array);
+int			ft_issign(char c);
+
 
 
 

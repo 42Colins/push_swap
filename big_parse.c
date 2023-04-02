@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:21:17 by cprojean          #+#    #+#             */
-/*   Updated: 2023/04/02 18:42:04 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:42:10 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,21 @@ void	clear_all(char **tab, t_stack **lst)
 	ft_lstintclear(lst);
 }
 
+int	ft_issign(char c)
+{
+	if (c == '-' || c == '+')
+		return (1);
+	else
+		return (0);
+}
 
 int	ft_check_lst(t_stack **lst)
 {
 	if (ft_lstsize(*lst) == 1)
 		return (1);
-	if (lst_is_sorted(lst) == 1)
-		return (1);
-	if (no_repeat(lst) == 1)
+	if (no_repeat(lst) != 0)
 		return (ft_putstr_err("Error\n"), 1);
-	else if (no_repeat(lst) == 2)
+	if (lst_is_sorted(lst) == 1)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/04/02 15:39:22 by cprojean         ###   ########.fr        #
+#    Updated: 2023/04/02 20:05:55 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ libftFLAGS = -L./libft -lft
 
 HEADERS = push_swap.h
 
+LIB = libft/libft.a
+
 SRCS =						swap.c \
 							push.c \
 							push_swap.c \
@@ -36,15 +38,17 @@ SRCS =						swap.c \
 
 OBJS = $(SRCS:.c=.o)
 
-%.o: %.c
+%.o: %.c	$(LIB) $(HEADERS)
 			$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) :	$(OBJS) $(libft) Makefile
-			$(MAKE) bonus -C libft
+all	:		makelib $(NAME)
+
+$(NAME) :	$(LIB) $(OBJS)
 			$(CC) $(OBJS) -o  $(NAME) -L./libft -lft
 
 
-all	:		$(NAME)
+makelib:
+			$(MAKE) -C libft
 
 clean :
 			$(MAKE) clean -C libft

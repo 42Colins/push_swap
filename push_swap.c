@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/04/02 18:46:57 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 19:45:24 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	only_nbr(char *array)
 	runner = 0;
 	while (array[runner] != '\0')
 	{
-		if (ft_isdigit(array[runner]) == 0 && \
-			(array[runner] - '0' != '-') \
-			&& array[runner] - '0' != '+')
+		if ((runner != 0 && !ft_isdigit(array[runner])) \
+		|| (runner == 0 && ft_issign(array[runner]) == 1 && array[1] == '\0')\
+		|| (!ft_isdigit(array[runner]) && !ft_issign(array[runner])))
 			return (ft_putstr_fd("Error\n", 2), 1);
 		runner++;
 	}
