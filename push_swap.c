@@ -6,13 +6,29 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:18:57 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/29 17:23:46 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:46:57 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	stack_ind(t_stack **lsta);
+
+int	only_nbr(char *array)
+{
+	int	runner;
+
+	runner = 0;
+	while (array[runner] != '\0')
+	{
+		if (ft_isdigit(array[runner]) == 0 && \
+			(array[runner] - '0' != '-') \
+			&& array[runner] - '0' != '+')
+			return (ft_putstr_fd("Error\n", 2), 1);
+		runner++;
+	}
+	return (0);
+}
 
 t_stack	*many_args(int argc, char **argv, t_stack **lst)
 {
@@ -23,10 +39,14 @@ t_stack	*many_args(int argc, char **argv, t_stack **lst)
 	runner = 1;
 	while (argv[runner] != NULL)
 	{
+		if (only_nbr(argv[runner]) == 1)
+			return (ft_lstintclear(lst), NULL);
 		new = ft_lstnew(ft_atoll(argv[runner]));
 		ft_lstadd_back(lst, new);
 		runner++;
 	}
+	if (errno == EINVAL)
+		return (ft_putstr_fd("Error\n", 2), ft_lstintclear(lst), NULL);
 	stack_ind(lst);
 	return (*lst);
 }
@@ -82,11 +102,13 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 	{
-		parse_arrays(argv, &lsta);
+		if (!parse_arrays(argv, &lsta))
+			return (1);
 	}
 	else
 	{
-		many_args(argc, argv, &lsta);
+		if (!many_args(argc, argv, &lsta))
+			return (1);
 	}
 	if (ft_check_lst(&lsta) == 1)
 		return (ft_lstintclear(&lsta), 1);

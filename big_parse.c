@@ -6,11 +6,13 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:21:17 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/29 18:36:19 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:42:04 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	clear_all(char **tab, t_stack **lst);
 
 t_stack	*parse_arrays(char **argv, t_stack **lsta)
 {
@@ -22,10 +24,14 @@ t_stack	*parse_arrays(char **argv, t_stack **lsta)
 	tmp = ft_split(argv[1], ' ');
 	while (tmp[runner])
 	{
+		if (only_nbr(tmp[runner]) == 1)
+			return (clear_all(tmp, lsta), NULL);
 		new = ft_lstnew(ft_atoll(tmp[runner]) + '0');
 		ft_lstadd_back(lsta, new);
 		runner++;
 	}
+	if (errno == EINVAL)
+		return (clear_all(tmp, lsta), NULL);
 	stack_ind(lsta);
 	runner = 0;
 	while (tmp[runner])
@@ -55,32 +61,28 @@ void	ft_putstr_err(char *str)
 	}
 }
 
-int	ft_isnbr(int c)
+void	clear_all(char **tab, t_stack **lst)
 {
-	if (0 <= c && c <= 9)
-		return (1);
-	else
-		return (0);
+	int	runner;
+
+	runner = 0;
+	while (tab[runner])
+	{
+		free(tab[runner]);
+		runner++;
+	}
+	free(tab);
+	ft_lstintclear(lst);
 }
 
 
 int	ft_check_lst(t_stack **lst)
 {
-	t_stack	*liste;
-
-	liste = *lst;
-	if (ft_lstsize(*lst) > 1)
-	{
-		while (liste != NULL)
-		{
-			if (ft_isnbr(liste->data) == 0)
-				return (ft_putstr_err("Error\n"), 1);
-			liste = liste->next;
-		}
-	}
+	if (ft_lstsize(*lst) == 1)
+		return (1);
 	if (lst_is_sorted(lst) == 1)
 		return (1);
-	if (no_repeat(lst) == 0)
+	if (no_repeat(lst) == 1)
 		return (ft_putstr_err("Error\n"), 1);
 	else if (no_repeat(lst) == 2)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:40:14 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/29 17:44:27 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:39:03 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "./libft/libft.h"
 # include "./libft/get_next_line.h"
+# include "errno.h"
 
 long long	ft_atoll(const char *str);
 int			*ft_intdup(int *s1);
@@ -42,6 +43,9 @@ t_stack		*parse_arrays(char **argv, t_stack **lsta);
 void		stack_ind(t_stack **lsta);
 void		ft_putstr_err(char *str);
 int			ft_check_lst(t_stack **lst);
+int			ft_isnbr(int c);
+int			only_nbr(char *array);
+
 
 
 

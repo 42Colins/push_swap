@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/29 18:14:59 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/02 17:59:47 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_sorted(char **array)
 	while ((array[runner] != NULL) && (array[runner + 1] != NULL))
 	{
 		if (ft_atoll(array[runner + 1]) < ft_atoll(array[runner]))
-			return (0);
+			return (ft_putstr_fd("Error\n", 2), 0);
 		runner++;
 	}
 	return (1);
@@ -55,7 +55,7 @@ int	no_repeat(t_stack **lst)
 		return (2);
 	while (tmp != NULL)
 	{
-		runner = *lst;
+		runner = tmp->next;
 		while (runner != NULL)
 		{
 			if ((tmp->data) == (runner->data))

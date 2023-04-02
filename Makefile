@@ -6,7 +6,7 @@
 #    By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 11:36:52 by cprojean          #+#    #+#              #
-#    Updated: 2023/03/29 15:56:27 by cprojean         ###   ########.fr        #
+#    Updated: 2023/04/02 15:39:22 by cprojean         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -rf
 
@@ -56,4 +56,4 @@ fclean :	clean
 
 re :		fclean all
 
-.SILENT : $(OBJS) $(NAME)
+# .SILENT : $(OBJS) $(NAME)
