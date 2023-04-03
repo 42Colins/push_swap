@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 11:40:15 by cprojean          #+#    #+#             */
-/*   Updated: 2023/04/02 17:59:47 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/03 13:19:25 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,4 @@ int	no_repeat(t_stack **lst)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-int	*ft_intdup(int *s1)
-{
-	int		size;
-	int		runner;
-	int		*dup;
-
-	runner = 0;
-	size = ft_intlen(s1);
-	dup = malloc(sizeof(int) * size + 1);
-	if (dup == 0)
-		return (0);
-	while (runner < size)
-	{
-		dup[runner] = s1[runner];
-		runner++;
-	}
-	dup[runner] = '\0';
-	return (dup);
 }

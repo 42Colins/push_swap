@@ -6,7 +6,7 @@
 /*   By: cprojean <cprojean@42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:03:39 by cprojean          #+#    #+#             */
-/*   Updated: 2023/03/21 13:51:24 by cprojean         ###   ########.fr       */
+/*   Updated: 2023/04/03 13:19:15 by cprojean         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,6 @@ void	ft_lstdelone(t_stack *lst, void (*del)(int));
 //ft_lstclear
 void	ft_lstclear(t_stack **lst);
 void	ft_lstintclear(t_stack **lst);
-
 
 //ft_lstiter
 void	ft_lstiter(t_stack *lst, void (*f)(int));
